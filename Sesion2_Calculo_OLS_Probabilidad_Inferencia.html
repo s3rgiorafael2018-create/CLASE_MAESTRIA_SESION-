@@ -1,0 +1,1557 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Sesión 2: Cálculo aplicado, Regresión OLS, Probabilidad e Inferencia &#8212; Nivelatorio Maestría en Estadística Aplicada</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Sesion2_Calculo_OLS_Probabilidad_Inferencia';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/images.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/images.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Sesión 2: Cálculo aplicado, Regresión OLS, Probabilidad e Inferencia
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FSesion2_Calculo_OLS_Probabilidad_Inferencia.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Sesion2_Calculo_OLS_Probabilidad_Inferencia.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sesión 2: Cálculo aplicado, Regresión OLS, Probabilidad e Inferencia</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sesión 2: Cálculo aplicado, Regresión OLS, Probabilidad e Inferencia</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-1-calculo-condensado-hacia-ols">Bloque 1: Cálculo condensado (hacia OLS)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivada-la-pendiente-de-una-funcion">Derivada: la pendiente de una función</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regla-de-la-cadena">Regla de la cadena</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradiente-la-derivada-en-varias-dimensiones">Gradiente: la derivada en varias dimensiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-la-funcion-de-perdida-a-la-ecuacion-normal">De la función de pérdida a la ecuación normal</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-2-laboratorio-regresion-ols-aplicada">Bloque 2: Laboratorio — Regresión OLS aplicada</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-respuesta-y-predictoras">Variable respuesta y predictoras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-los-coeficientes">Interpretación de los coeficientes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-3-probabilidad-esencial">Bloque 3: Probabilidad esencial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomas-basicos">Axiomas básicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-condicional-y-teorema-de-bayes">Probabilidad condicional y Teorema de Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-y-distribuciones-clave">Variables aleatorias y distribuciones clave</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-4-inferencia-esencial">Bloque 4: Inferencia esencial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-puntual-vs-intervalo-de-confianza">Estimación puntual vs. intervalo de confianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-hipotesis-las-ventas-en-feriados-son-distintas">Prueba de hipótesis: ¿las ventas en feriados son distintas?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-5-proyecto-integrador-mini">Bloque 5: Proyecto integrador mini</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-estandar-de-los-coeficientes">Errores estándar de los coeficientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-contra-statsmodels">Validación contra <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discusion-guiada">Discusión guiada</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cierre-y-retroalimentacion">Cierre y retroalimentación</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintesis-del-arco-completo">Síntesis del arco completo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brechas-remanentes-material-de-refuerzo-autodirigido">Brechas remanentes (material de refuerzo autodirigido)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-cierre-para-discusion">Preguntas de cierre (para discusión)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sesion-2-calculo-aplicado-regresion-ols-probabilidad-e-inferencia">
+<h1>Sesión 2: Cálculo aplicado, Regresión OLS, Probabilidad e Inferencia<a class="headerlink" href="#sesion-2-calculo-aplicado-regresion-ols-probabilidad-e-inferencia" title="Permalink to this heading">#</a></h1>
+<p><strong>Objetivo de la sesión:</strong> que el estudiante entienda y pueda reproducir en código la deducción matricial del estimador OLS, y que pueda cuantificar la incertidumbre asociada a los coeficientes estimados (errores estándar, intervalos de confianza, pruebas de hipótesis).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bloque-1-calculo-condensado-hacia-ols">
+<h1>Bloque 1: Cálculo condensado (hacia OLS)<a class="headerlink" href="#bloque-1-calculo-condensado-hacia-ols" title="Permalink to this heading">#</a></h1>
+<section id="derivada-la-pendiente-de-una-funcion">
+<h2>Derivada: la pendiente de una función<a class="headerlink" href="#derivada-la-pendiente-de-una-funcion" title="Permalink to this heading">#</a></h2>
+<p>La derivada de una función <span class="math notranslate nohighlight">\(f(x)\)</span> en un punto mide qué tan rápido cambia <span class="math notranslate nohighlight">\(f\)</span> cuando <span class="math notranslate nohighlight">\(x\)</span> cambia. Geométricamente es la pendiente de la recta tangente.</p>
+<p>Para funciones simples usamos reglas conocidas, por ejemplo:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = x^2 \quad \Rightarrow \quad f'(x) = 2x
+\]</div>
+<p>Lo importante para nosotros: <strong>en un mínimo (o máximo) de una función suave, la derivada vale cero.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejemplo numérico: f(x) = (x - 3)^2 tiene su mínimo en x = 3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">df</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># derivada</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mínimo en x=3&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;f(x) = (x - 3)²&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;f(x)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f&#39;(x) = 0&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;f&#39;(x) = 2(x - 3)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;f&#39;(x)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bff77076e1c8039f27187cf4cd9467785135c3ebba3aa528277b652c332287c6.png" src="_images/bff77076e1c8039f27187cf4cd9467785135c3ebba3aa528277b652c332287c6.png" />
+</div>
+</div>
+<p>La derivada se anula exactamente donde <span class="math notranslate nohighlight">\(f\)</span> alcanza su mínimo. Esta observación —<strong>condición de primer orden</strong>— es la idea central que vamos a extender a varias dimensiones para llegar a OLS.</p>
+</section>
+<section id="regla-de-la-cadena">
+<h2>Regla de la cadena<a class="headerlink" href="#regla-de-la-cadena" title="Permalink to this heading">#</a></h2>
+<p>Cuando una función está compuesta por otra, <span class="math notranslate nohighlight">\(f(g(x))\)</span>, su derivada es:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dx}f(g(x)) = f'(g(x))\cdot g'(x)
+\]</div>
+<p>La usaremos implícitamente al derivar expresiones cuadráticas que contienen productos matriciales, como <span class="math notranslate nohighlight">\((\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})\)</span>.</p>
+</section>
+<section id="gradiente-la-derivada-en-varias-dimensiones">
+<h2>Gradiente: la derivada en varias dimensiones<a class="headerlink" href="#gradiente-la-derivada-en-varias-dimensiones" title="Permalink to this heading">#</a></h2>
+<p>Cuando la función depende de varias variables, <span class="math notranslate nohighlight">\(f(\beta_0, \beta_1, \dots)\)</span>, ya no hay una sola derivada sino un <strong>vector de derivadas parciales</strong>, llamado gradiente:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\nabla f(\boldsymbol{\beta}) =
+\begin{bmatrix}
+\partial f/\partial \beta_0 \\
+\partial f/\partial \beta_1 \\
+\vdots
+\end{bmatrix}
+\end{split}\]</div>
+<p>La condición de primer orden en varias dimensiones es la misma idea: <strong>en el mínimo, el gradiente es el vector cero.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualizacion del gradiente en 2D: f(b0, b1) = (b0-2)^2 + (b1-3)^2, minimo en (2, 3)</span>
+<span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">B0</span><span class="p">,</span> <span class="n">B1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="n">B0</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">B1</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># gradiente analitico: df/db0 = 2(b0-2), df/db1 = 2(b1-3)</span>
+<span class="n">b0_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">b1_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">B0q</span><span class="p">,</span> <span class="n">B1q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">b0_q</span><span class="p">,</span> <span class="n">b1_q</span><span class="p">)</span>
+<span class="n">dF0</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">B0q</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">dF1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">B1q</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">B0</span><span class="p">,</span> <span class="n">B1</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">B0q</span><span class="p">,</span> <span class="n">B1q</span><span class="p">,</span> <span class="o">-</span><span class="n">dF0</span><span class="p">,</span> <span class="o">-</span><span class="n">dF1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;crimson&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;-gradiente (dirección de descenso)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;r*&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mínimo (β0=2, β1=3)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;β0&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;β1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Curvas de nivel de f(β) y dirección del gradiente&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/858c9604bcb1ac062d5e21d8371eeb7c886d89d85e47319fc4ec43436dbc4546.png" src="_images/858c9604bcb1ac062d5e21d8371eeb7c886d89d85e47319fc4ec43436dbc4546.png" />
+</div>
+</div>
+<p>Las flechas apuntan en la dirección de <strong>mayor descenso</strong>, y todas convergen hacia el mínimo donde el gradiente es cero. Esta es exactamente la lógica detrás de la deducción de OLS.</p>
+</section>
+<section id="de-la-funcion-de-perdida-a-la-ecuacion-normal">
+<h2>De la función de pérdida a la ecuación normal<a class="headerlink" href="#de-la-funcion-de-perdida-a-la-ecuacion-normal" title="Permalink to this heading">#</a></h2>
+<p>En regresión lineal buscamos el vector <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> que minimiza la suma de errores al cuadrado:</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{\boldsymbol{\beta}} \; \|\mathbf{y} - X\boldsymbol{\beta}\|^2 = (\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta})
+\]</div>
+<p>Aplicando la condición de primer orden (derivar respecto a <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> e igualar a cero):</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla_{\boldsymbol{\beta}} \; (\mathbf{y}-X\boldsymbol{\beta})^T(\mathbf{y}-X\boldsymbol{\beta}) = -2X^T(\mathbf{y}-X\boldsymbol{\beta}) = \mathbf{0}
+\]</div>
+<p>Despejando:</p>
+<div class="math notranslate nohighlight">
+\[
+X^TX\boldsymbol{\beta} = X^T\mathbf{y} \qquad \text{(ecuación normal)}
+\]</div>
+<p>Y como vimos en la sesión anterior, si <span class="math notranslate nohighlight">\(X^TX\)</span> es definida positiva (invertible):</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comprobación numérica: en la solución óptima, el gradiente de la pérdida es (numéricamente) cero</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_demo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])])</span>
+<span class="n">y_demo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">])</span>
+
+<span class="n">beta_hat_demo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X_demo</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X_demo</span><span class="p">)</span> <span class="o">@</span> <span class="n">X_demo</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y_demo</span>
+<span class="n">gradiente</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">X_demo</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">y_demo</span> <span class="o">-</span> <span class="n">X_demo</span> <span class="o">@</span> <span class="n">beta_hat_demo</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;β̂ =&quot;</span><span class="p">,</span> <span class="n">beta_hat_demo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gradiente en β̂ (debería ser ≈ 0):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">gradiente</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>β̂ = [0.05 1.99]
+Gradiente en β̂ (debería ser ≈ 0): [0. 0.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bloque-2-laboratorio-regresion-ols-aplicada">
+<h1>Bloque 2: Laboratorio — Regresión OLS aplicada<a class="headerlink" href="#bloque-2-laboratorio-regresion-ols-aplicada" title="Permalink to this heading">#</a></h1>
+<p>Vamos a aplicar la fórmula <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y}\)</span> a un dataset real: ventas semanales de tiendas, con variables como temperatura, precio del combustible y desempleo. Este mismo modelo se retomará en el bloque de inferencia para cuantificar la incertidumbre de los coeficientes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;sales.csv&quot;</span><span class="p">)</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10774, 9)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>store</th>
+      <th>type</th>
+      <th>department</th>
+      <th>date</th>
+      <th>weekly_sales</th>
+      <th>is_holiday</th>
+      <th>temperature_c</th>
+      <th>fuel_price_usd_per_l</th>
+      <th>unemployment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-02-05</td>
+      <td>24924.50</td>
+      <td>False</td>
+      <td>5.727778</td>
+      <td>0.679451</td>
+      <td>8.106</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-03-05</td>
+      <td>21827.90</td>
+      <td>False</td>
+      <td>8.055556</td>
+      <td>0.693452</td>
+      <td>8.106</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-04-02</td>
+      <td>57258.43</td>
+      <td>False</td>
+      <td>16.816667</td>
+      <td>0.718284</td>
+      <td>7.808</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-05-07</td>
+      <td>17413.94</td>
+      <td>False</td>
+      <td>22.527778</td>
+      <td>0.748928</td>
+      <td>7.808</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-06-04</td>
+      <td>17558.09</td>
+      <td>False</td>
+      <td>27.050000</td>
+      <td>0.714586</td>
+      <td>7.808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>store</th>
+      <th>department</th>
+      <th>weekly_sales</th>
+      <th>temperature_c</th>
+      <th>fuel_price_usd_per_l</th>
+      <th>unemployment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10774.000000</td>
+      <td>10774.000000</td>
+      <td>10774.000000</td>
+      <td>10774.000000</td>
+      <td>10774.000000</td>
+      <td>10774.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>15.441897</td>
+      <td>45.218118</td>
+      <td>23843.950149</td>
+      <td>15.731978</td>
+      <td>0.749746</td>
+      <td>8.082009</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>11.534511</td>
+      <td>29.867779</td>
+      <td>30220.387557</td>
+      <td>9.922446</td>
+      <td>0.059494</td>
+      <td>0.624355</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>-1098.000000</td>
+      <td>-8.366667</td>
+      <td>0.664129</td>
+      <td>3.879000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>4.000000</td>
+      <td>20.000000</td>
+      <td>3867.115000</td>
+      <td>7.583333</td>
+      <td>0.708246</td>
+      <td>7.795000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>13.000000</td>
+      <td>40.000000</td>
+      <td>12049.065000</td>
+      <td>16.966667</td>
+      <td>0.743381</td>
+      <td>8.099000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>20.000000</td>
+      <td>72.000000</td>
+      <td>32349.850000</td>
+      <td>24.166667</td>
+      <td>0.781421</td>
+      <td>8.360000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>39.000000</td>
+      <td>99.000000</td>
+      <td>293966.050000</td>
+      <td>33.827778</td>
+      <td>1.107674</td>
+      <td>9.765000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="variable-respuesta-y-predictoras">
+<h2>Variable respuesta y predictoras<a class="headerlink" href="#variable-respuesta-y-predictoras" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Respuesta (<span class="math notranslate nohighlight">\(y\)</span>):</strong> <code class="docutils literal notranslate"><span class="pre">weekly_sales</span></code> — ventas semanales de la tienda/departamento.</p></li>
+<li><p><strong>Predictoras (<span class="math notranslate nohighlight">\(X\)</span>):</strong> <code class="docutils literal notranslate"><span class="pre">temperature_c</span></code>, <code class="docutils literal notranslate"><span class="pre">fuel_price_usd_per_l</span></code>, <code class="docutils literal notranslate"><span class="pre">unemployment</span></code>.</p></li>
+</ul>
+<p>Este es un modelo simplificado con fines didácticos (en la práctica también se controlaría por tienda, departamento y estacionalidad).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;weekly_sales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">predictoras</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;temperature_c&quot;</span><span class="p">,</span> <span class="s2">&quot;fuel_price_usd_per_l&quot;</span><span class="p">,</span> <span class="s2">&quot;unemployment&quot;</span><span class="p">]</span>
+<span class="n">X_raw</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="n">predictoras</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Matriz de diseño: agregar columna de 1s para el intercepto</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">X_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">X_raw</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensión de X (matriz de diseño):&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensión de y:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensión de X (matriz de diseño): (10774, 4)
+Dimensión de y: (10774,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Método 1: fórmula cerrada con la inversa explícita</span>
+<span class="n">beta_hat_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
+
+<span class="c1"># Método 2: resolver el sistema lineal directamente (más estable numéricamente,</span>
+<span class="c1"># evita calcular la inversa de forma explícita)</span>
+<span class="n">beta_hat_solve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">nombres_coef</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;intercepto&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">predictoras</span>
+<span class="n">resultado_manual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;coeficiente&quot;</span><span class="p">:</span> <span class="n">nombres_coef</span><span class="p">,</span>
+    <span class="s2">&quot;beta_hat (inv)&quot;</span><span class="p">:</span> <span class="n">beta_hat_inv</span><span class="p">,</span>
+    <span class="s2">&quot;beta_hat (solve)&quot;</span><span class="p">:</span> <span class="n">beta_hat_solve</span>
+<span class="p">})</span>
+<span class="n">resultado_manual</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coeficiente</th>
+      <th>beta_hat (inv)</th>
+      <th>beta_hat (solve)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>intercepto</td>
+      <td>30729.179814</td>
+      <td>30729.179814</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>temperature_c</td>
+      <td>-96.484389</td>
+      <td>-96.484389</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>fuel_price_usd_per_l</td>
+      <td>-35848.899508</td>
+      <td>-35848.899508</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>unemployment</td>
+      <td>2661.494814</td>
+      <td>2661.494814</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Nota:</strong> <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code> es preferible a calcular <code class="docutils literal notranslate"><span class="pre">np.linalg.inv</span></code> explícitamente en la práctica, porque es numéricamente más estable y más eficiente — invertir una matriz es un paso intermedio que rara vez se necesita por sí solo. Aquí mostramos ambos porque conceptualmente son la misma fórmula.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validación contra scikit-learn</span>
+<span class="n">modelo_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">modelo_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_raw</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">resultado_manual</span><span class="p">[</span><span class="s2">&quot;beta_hat (sklearn)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">modelo_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">modelo_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="n">resultado_manual</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coeficiente</th>
+      <th>beta_hat (inv)</th>
+      <th>beta_hat (solve)</th>
+      <th>beta_hat (sklearn)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>intercepto</td>
+      <td>30729.179814</td>
+      <td>30729.179814</td>
+      <td>30729.179814</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>temperature_c</td>
+      <td>-96.484389</td>
+      <td>-96.484389</td>
+      <td>-96.484389</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>fuel_price_usd_per_l</td>
+      <td>-35848.899508</td>
+      <td>-35848.899508</td>
+      <td>-35848.899508</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>unemployment</td>
+      <td>2661.494814</td>
+      <td>2661.494814</td>
+      <td>2661.494814</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Los tres métodos coinciden (hasta errores de redondeo). Esto confirma que <code class="docutils literal notranslate"><span class="pre">sklearn.LinearRegression</span></code> no hace magia: internamente resuelve la misma ecuación normal que dedujimos con cálculo y calculamos a mano con álgebra lineal.</p>
+</section>
+<section id="interpretacion-de-los-coeficientes">
+<h2>Interpretación de los coeficientes<a class="headerlink" href="#interpretacion-de-los-coeficientes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>El <strong>intercepto</strong> es el nivel esperado de ventas cuando todas las predictoras son cero (interpretación literal poco útil aquí, pero necesaria como ancla del modelo).</p></li>
+<li><p>Cada coeficiente indica el cambio esperado en <code class="docutils literal notranslate"><span class="pre">weekly_sales</span></code> por cada unidad adicional de esa variable, <strong>manteniendo las demás constantes</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicciones vs valores reales</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">beta_hat_solve</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;predicción perfecta&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Ventas reales&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ventas predichas&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Valores reales vs. predichos (modelo OLS)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">r2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² del modelo: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e6acc489350f545011b4508183a458d8d731b60034edb50ff99d908bb1ecc966.png" src="_images/e6acc489350f545011b4508183a458d8d731b60034edb50ff99d908bb1ecc966.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R² del modelo: 0.0073
+</pre></div>
+</div>
+</div>
+</div>
+<p>El <span class="math notranslate nohighlight">\(R^2\)</span> es bajo — esperable, porque solo usamos tres variables macro y el dataset mezcla muchas tiendas y departamentos con niveles de venta muy distintos. El punto pedagógico no es la calidad predictiva sino verificar que el mecanismo matemático (álgebra → cálculo → OLS) funciona igual que en <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bloque-3-probabilidad-esencial">
+<h1>Bloque 3: Probabilidad esencial<a class="headerlink" href="#bloque-3-probabilidad-esencial" title="Permalink to this heading">#</a></h1>
+<section id="axiomas-basicos">
+<h2>Axiomas básicos<a class="headerlink" href="#axiomas-basicos" title="Permalink to this heading">#</a></h2>
+<p>Para cualquier evento <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(P(A) \geq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\Omega) = 1\)</span> (el espacio muestral completo tiene probabilidad 1)</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son mutuamente excluyentes: <span class="math notranslate nohighlight">\(P(A \cup B) = P(A) + P(B)\)</span></p></li>
+</ol>
+</section>
+<section id="probabilidad-condicional-y-teorema-de-bayes">
+<h2>Probabilidad condicional y Teorema de Bayes<a class="headerlink" href="#probabilidad-condicional-y-teorema-de-bayes" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]</div>
+<p>El <strong>Teorema de Bayes</strong> permite “invertir” la condicional:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \mid B) = \frac{P(B \mid A)\,P(A)}{P(B)}
+\]</div>
+<p>Veámoslo aplicado sobre el mismo dataset de ventas: ¿la probabilidad de que una semana sea de alta venta cambia si sabemos que es semana de feriado (<code class="docutils literal notranslate"><span class="pre">is_holiday</span></code>)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definimos &quot;alta venta&quot; como estar por encima de la mediana</span>
+<span class="n">umbral</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;weekly_sales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">datos</span><span class="p">[</span><span class="s2">&quot;alta_venta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;weekly_sales&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">umbral</span>
+
+<span class="n">tabla</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">datos</span><span class="p">[</span><span class="s2">&quot;is_holiday&quot;</span><span class="p">],</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;alta_venta&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">tabla</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Venta baja (%)&quot;</span><span class="p">,</span> <span class="s2">&quot;Venta alta (%)&quot;</span><span class="p">]</span>
+<span class="n">tabla</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;No feriado&quot;</span><span class="p">,</span> <span class="s2">&quot;Feriado&quot;</span><span class="p">]</span>
+<span class="n">tabla</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Venta baja (%)</th>
+      <th>Venta alta (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>No feriado</th>
+      <td>49.8</td>
+      <td>50.2</td>
+    </tr>
+    <tr>
+      <th>Feriado</th>
+      <td>100.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_alta</span> <span class="o">=</span> <span class="p">(</span><span class="n">datos</span><span class="p">[</span><span class="s2">&quot;alta_venta&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_alta_dado_feriado</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datos</span><span class="p">[</span><span class="s2">&quot;is_holiday&quot;</span><span class="p">],</span> <span class="s2">&quot;alta_venta&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_feriado</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;is_holiday&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Bayes: P(feriado | alta venta) = P(alta venta | feriado) * P(feriado) / P(alta venta)</span>
+<span class="n">p_feriado_dado_alta</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_alta_dado_feriado</span> <span class="o">*</span> <span class="n">p_feriado</span><span class="p">)</span> <span class="o">/</span> <span class="n">p_alta</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(alta venta)                    = </span><span class="si">{</span><span class="n">p_alta</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(alta venta | feriado)          = </span><span class="si">{</span><span class="n">p_alta_dado_feriado</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(feriado | alta venta) [Bayes]  = </span><span class="si">{</span><span class="n">p_feriado_dado_alta</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(feriado) [base]                = </span><span class="si">{</span><span class="n">p_feriado</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(alta venta)                    = 0.5000
+P(alta venta | feriado)          = 0.0000
+P(feriado | alta venta) [Bayes]  = 0.0000
+P(feriado) [base]                = 0.0039
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si <span class="math notranslate nohighlight">\(P(\text{feriado}\mid\text{alta venta}) &gt; P(\text{feriado})\)</span>, saber que una semana tuvo alta venta hace <em>más probable</em> que haya sido feriado — es decir, la información sobre las ventas actualiza nuestra creencia sobre si fue feriado. Esta es la lógica de Bayes: actualizar probabilidades con nueva evidencia.</p>
+</section>
+<section id="variables-aleatorias-y-distribuciones-clave">
+<h2>Variables aleatorias y distribuciones clave<a class="headerlink" href="#variables-aleatorias-y-distribuciones-clave" title="Permalink to this heading">#</a></h2>
+<p>Una variable aleatoria puede ser:</p>
+<ul class="simple">
+<li><p><strong>Discreta</strong>: toma valores contables (ej. número de feriados en un mes).</p></li>
+<li><p><strong>Continua</strong>: toma cualquier valor en un rango (ej. <code class="docutils literal notranslate"><span class="pre">weekly_sales</span></code>, <code class="docutils literal notranslate"><span class="pre">temperature_c</span></code>).</p></li>
+</ul>
+<p>Tres distribuciones son especialmente importantes para lo que sigue (inferencia sobre los coeficientes de OLS):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Normal estándar</span><span class="se">\n</span><span class="s2">(errores, estadísticos estandarizados)&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">df_</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;df=</span><span class="si">{</span><span class="n">df_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Normal&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;t de Student</span><span class="se">\n</span><span class="s2">(pruebas t con muestras pequeñas)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">x_chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">df_</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]:</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_chi</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_chi</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;df=</span><span class="si">{</span><span class="n">df_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Chi-cuadrado</span><span class="se">\n</span><span class="s2">(varianza, bondad de ajuste)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;valor&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/af91bc863dc23a6d943a6d69e1af65c4fd9b58b8ea0865d6ad8683c2731b45ee.png" src="_images/af91bc863dc23a6d943a6d69e1af65c4fd9b58b8ea0865d6ad8683c2731b45ee.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>La <strong>Normal</strong> aparece porque, bajo supuestos estándar, los errores de OLS y los coeficientes estimados se distribuyen (aproximadamente) normal.</p></li>
+<li><p>La <strong>t de Student</strong> aparece al estimar la varianza con una muestra finita (como haremos con los errores estándar de <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}}\)</span>): es una Normal “más ancha” que se acerca a la Normal cuando el tamaño de muestra crece.</p></li>
+<li><p>La <strong>Chi-cuadrado</strong> aparece en la estimación de la varianza de los errores y en pruebas de bondad de ajuste.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bloque-4-inferencia-esencial">
+<h1>Bloque 4: Inferencia esencial<a class="headerlink" href="#bloque-4-inferencia-esencial" title="Permalink to this heading">#</a></h1>
+<section id="estimacion-puntual-vs-intervalo-de-confianza">
+<h2>Estimación puntual vs. intervalo de confianza<a class="headerlink" href="#estimacion-puntual-vs-intervalo-de-confianza" title="Permalink to this heading">#</a></h2>
+<p>Un <strong>estimador puntual</strong> (como <span class="math notranslate nohighlight">\(\bar{x}\)</span> para la media) da un solo número, pero no dice nada sobre qué tan confiable es. Un <strong>intervalo de confianza (IC)</strong> agrega esa incertidumbre:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} \pm t_{\alpha/2, \, n-1} \cdot \frac{s}{\sqrt{n}}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(s\)</span> es la desviación estándar muestral y <span class="math notranslate nohighlight">\(t_{\alpha/2, n-1}\)</span> es el cuantil de la distribución t.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">muestra</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;weekly_sales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">media</span> <span class="o">=</span> <span class="n">muestra</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">error_estandar</span> <span class="o">=</span> <span class="n">muestra</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">muestra</span><span class="p">))</span>
+<span class="n">t_critico</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">muestra</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ic_inferior</span> <span class="o">=</span> <span class="n">media</span> <span class="o">-</span> <span class="n">t_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+<span class="n">ic_superior</span> <span class="o">=</span> <span class="n">media</span> <span class="o">+</span> <span class="n">t_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Media muestral: </span><span class="si">{</span><span class="n">media</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error estándar: </span><span class="si">{</span><span class="n">error_estandar</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95%: [</span><span class="si">{</span><span class="n">ic_inferior</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">ic_superior</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media muestral: 23975.88
+Error estándar: 2259.13
+IC 95%: [19520.97, 28430.79]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretación correcta:</strong> si repitiéramos este muestreo muchas veces y construyéramos un IC 95% cada vez, esperaríamos que el 95% de esos intervalos contengan la verdadera media poblacional. <strong>No</strong> significa que hay 95% de probabilidad de que la media verdadera esté en <em>este</em> intervalo específico (la media verdadera es fija, no aleatoria).</p>
+</section>
+<section id="prueba-de-hipotesis-las-ventas-en-feriados-son-distintas">
+<h2>Prueba de hipótesis: ¿las ventas en feriados son distintas?<a class="headerlink" href="#prueba-de-hipotesis-las-ventas-en-feriados-son-distintas" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+H_0: \mu_{\text{feriado}} = \mu_{\text{no feriado}} \qquad H_1: \mu_{\text{feriado}} \neq \mu_{\text{no feriado}}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ventas_feriado</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datos</span><span class="p">[</span><span class="s2">&quot;is_holiday&quot;</span><span class="p">],</span> <span class="s2">&quot;weekly_sales&quot;</span><span class="p">]</span>
+<span class="n">ventas_no_feriado</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">datos</span><span class="p">[</span><span class="s2">&quot;is_holiday&quot;</span><span class="p">],</span> <span class="s2">&quot;weekly_sales&quot;</span><span class="p">]</span>
+
+<span class="n">t_stat</span><span class="p">,</span> <span class="n">p_valor</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">ventas_feriado</span><span class="p">,</span> <span class="n">ventas_no_feriado</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Media en feriado:     </span><span class="si">{</span><span class="n">ventas_feriado</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Media en no feriado:  </span><span class="si">{</span><span class="n">ventas_no_feriado</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estadístico t: </span><span class="si">{</span><span class="n">t_stat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valor-p: </span><span class="si">{</span><span class="n">p_valor</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media en feriado:     600.55
+Media en no feriado:  23934.91
+Estadístico t: -69.8121
+Valor-p: 0.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretación correcta del valor-p:</strong> es la probabilidad de observar una diferencia de medias tan extrema (o más) que la observada, <strong>asumiendo que <span class="math notranslate nohighlight">\(H_0\)</span> es verdadera</strong> (que no hay diferencia real). No es la probabilidad de que <span class="math notranslate nohighlight">\(H_0\)</span> sea verdadera, ni la probabilidad de “haberse equivocado” si se rechaza.</p>
+<p>Con un umbral convencional de <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>: si el valor-p es menor que <span class="math notranslate nohighlight">\(\alpha\)</span>, se rechaza <span class="math notranslate nohighlight">\(H_0\)</span> — hay evidencia de que las ventas en feriado difieren de las de no feriado.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bloque-5-proyecto-integrador-mini">
+<h1>Bloque 5: Proyecto integrador mini<a class="headerlink" href="#bloque-5-proyecto-integrador-mini" title="Permalink to this heading">#</a></h1>
+<p>Ahora conectamos todo: tomamos el <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}}\)</span> calculado en el Bloque 2 y le agregamos incertidumbre. La pregunta ya no es solo “¿cuál es el efecto estimado de cada variable?” sino “¿ese efecto es estadísticamente distinguible de cero?”</p>
+<section id="errores-estandar-de-los-coeficientes">
+<h2>Errores estándar de los coeficientes<a class="headerlink" href="#errores-estandar-de-los-coeficientes" title="Permalink to this heading">#</a></h2>
+<p>Bajo los supuestos clásicos de OLS, la matriz de varianza-covarianza de <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}}\)</span> es:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{\text{Var}}(\hat{\boldsymbol{\beta}}) = \hat{\sigma}^2 (X^TX)^{-1}
+\qquad \text{donde} \qquad
+\hat{\sigma}^2 = \frac{\sum \hat{\epsilon}_i^2}{n - p}
+\]</div>
+<p>con <span class="math notranslate nohighlight">\(\hat{\epsilon}_i = y_i - \hat{y}_i\)</span> los residuos, <span class="math notranslate nohighlight">\(n\)</span> el número de observaciones y <span class="math notranslate nohighlight">\(p\)</span> el número de parámetros (incluido el intercepto).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuos</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y_pred</span>
+<span class="n">n_obs</span><span class="p">,</span> <span class="n">p_params</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">sigma2_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">residuos</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_obs</span> <span class="o">-</span> <span class="n">p_params</span><span class="p">)</span>
+<span class="n">var_beta</span> <span class="o">=</span> <span class="n">sigma2_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">errores_estandar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">var_beta</span><span class="p">))</span>
+
+<span class="n">t_stats</span> <span class="o">=</span> <span class="n">beta_hat_solve</span> <span class="o">/</span> <span class="n">errores_estandar</span>
+<span class="n">p_valores</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t_stats</span><span class="p">),</span> <span class="n">df</span><span class="o">=</span><span class="n">n_obs</span> <span class="o">-</span> <span class="n">p_params</span><span class="p">))</span>
+
+<span class="n">t_crit</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">n_obs</span> <span class="o">-</span> <span class="n">p_params</span><span class="p">)</span>
+<span class="n">ic_inf</span> <span class="o">=</span> <span class="n">beta_hat_solve</span> <span class="o">-</span> <span class="n">t_crit</span> <span class="o">*</span> <span class="n">errores_estandar</span>
+<span class="n">ic_sup</span> <span class="o">=</span> <span class="n">beta_hat_solve</span> <span class="o">+</span> <span class="n">t_crit</span> <span class="o">*</span> <span class="n">errores_estandar</span>
+
+<span class="n">tabla_inferencia</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;coeficiente&quot;</span><span class="p">:</span> <span class="n">nombres_coef</span><span class="p">,</span>
+    <span class="s2">&quot;beta_hat&quot;</span><span class="p">:</span> <span class="n">beta_hat_solve</span><span class="p">,</span>
+    <span class="s2">&quot;error_std&quot;</span><span class="p">:</span> <span class="n">errores_estandar</span><span class="p">,</span>
+    <span class="s2">&quot;t_stat&quot;</span><span class="p">:</span> <span class="n">t_stats</span><span class="p">,</span>
+    <span class="s2">&quot;p_valor&quot;</span><span class="p">:</span> <span class="n">p_valores</span><span class="p">,</span>
+    <span class="s2">&quot;IC_95_inf&quot;</span><span class="p">:</span> <span class="n">ic_inf</span><span class="p">,</span>
+    <span class="s2">&quot;IC_95_sup&quot;</span><span class="p">:</span> <span class="n">ic_sup</span>
+<span class="p">})</span>
+<span class="n">tabla_inferencia</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coeficiente</th>
+      <th>beta_hat</th>
+      <th>error_std</th>
+      <th>t_stat</th>
+      <th>p_valor</th>
+      <th>IC_95_inf</th>
+      <th>IC_95_sup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>intercepto</td>
+      <td>30729.1798</td>
+      <td>5135.1980</td>
+      <td>5.9840</td>
+      <td>0.0000</td>
+      <td>20663.2454</td>
+      <td>40795.1142</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>temperature_c</td>
+      <td>-96.4844</td>
+      <td>29.9207</td>
+      <td>-3.2247</td>
+      <td>0.0013</td>
+      <td>-155.1344</td>
+      <td>-37.8344</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>fuel_price_usd_per_l</td>
+      <td>-35848.8995</td>
+      <td>5010.0940</td>
+      <td>-7.1553</td>
+      <td>0.0000</td>
+      <td>-45669.6070</td>
+      <td>-26028.1920</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>unemployment</td>
+      <td>2661.4948</td>
+      <td>467.3036</td>
+      <td>5.6954</td>
+      <td>0.0000</td>
+      <td>1745.4937</td>
+      <td>3577.4959</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="validacion-contra-statsmodels">
+<h2>Validación contra <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code><a class="headerlink" href="#validacion-contra-statsmodels" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> calcula exactamente esto con <code class="docutils literal notranslate"><span class="pre">.summary()</span></code>. Lo usamos para confirmar que el cálculo manual es correcto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_sm</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_raw</span><span class="p">)</span>
+<span class="n">modelo_sm</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X_sm</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modelo_sm</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.007
+Model:                            OLS   Adj. R-squared:                  0.007
+Method:                 Least Squares   F-statistic:                     26.26
+Date:                Tue, 18 Aug 2026   Prob (F-statistic):           6.46e-17
+Time:                        17:09:21   Log-Likelihood:            -1.2640e+05
+No. Observations:               10774   AIC:                         2.528e+05
+Df Residuals:                   10770   BIC:                         2.528e+05
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const       3.073e+04   5135.198      5.984      0.000    2.07e+04    4.08e+04
+x1           -96.4844     29.921     -3.225      0.001    -155.134     -37.834
+x2         -3.585e+04   5010.094     -7.155      0.000   -4.57e+04    -2.6e+04
+x3          2661.4948    467.304      5.695      0.000    1745.494    3577.496
+==============================================================================
+Omnibus:                     4944.965   Durbin-Watson:                   0.209
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            25704.448
+Skew:                           2.215   Prob(JB):                         0.00
+Kurtosis:                       9.134   Cond. No.                         451.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="discusion-guiada">
+<h2>Discusión guiada<a class="headerlink" href="#discusion-guiada" title="Permalink to this heading">#</a></h2>
+<p>Comparen la tabla calculada a mano con la salida de <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>:</p>
+<ul class="simple">
+<li><p>Los coeficientes (<code class="docutils literal notranslate"><span class="pre">beta_hat</span></code>) deben coincidir con <code class="docutils literal notranslate"><span class="pre">coef</span></code> en el resumen de <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>.</p></li>
+<li><p>Los errores estándar (<code class="docutils literal notranslate"><span class="pre">error_std</span></code>) deben coincidir con <code class="docutils literal notranslate"><span class="pre">std</span> <span class="pre">err</span></code>.</p></li>
+<li><p>Los estadísticos t y valores-p deben coincidir con <code class="docutils literal notranslate"><span class="pre">t</span></code> y <code class="docutils literal notranslate"><span class="pre">P&gt;|t|</span></code>.</p></li>
+<li><p>Los intervalos de confianza deben coincidir con <code class="docutils literal notranslate"><span class="pre">[0.025,</span> <span class="pre">0.975]</span></code>.</p></li>
+</ul>
+<p>Para cada coeficiente: si el intervalo de confianza <strong>no contiene el cero</strong>, hay evidencia de que esa variable tiene un efecto real (distinto de cero) sobre las ventas semanales, al 95% de confianza — equivalente a que su valor-p sea menor a 0.05.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cierre-y-retroalimentacion">
+<h1>Cierre y retroalimentación<a class="headerlink" href="#cierre-y-retroalimentacion" title="Permalink to this heading">#</a></h1>
+<section id="sintesis-del-arco-completo">
+<h2>Síntesis del arco completo<a class="headerlink" href="#sintesis-del-arco-completo" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Álgebra lineal</strong> (sesión anterior): representamos los datos como matrices y dedujimos que <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y}\)</span> resuelve el problema, apoyándonos en que <span class="math notranslate nohighlight">\(X^TX\)</span> es simétrica y definida positiva.</p></li>
+<li><p><strong>Cálculo</strong> (este bloque): mostramos <em>por qué</em> esa fórmula es la solución — es el punto donde el gradiente de la función de pérdida se anula.</p></li>
+<li><p><strong>Aplicación</strong>: calculamos <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}}\)</span> a mano sobre datos reales y confirmamos que coincide con <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p></li>
+<li><p><strong>Probabilidad</strong>: revisamos las herramientas (Bayes, distribuciones Normal/t/Chi-cuadrado) necesarias para hablar de incertidumbre.</p></li>
+<li><p><strong>Inferencia</strong>: le agregamos incertidumbre a <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\beta}}\)</span> — errores estándar, intervalos de confianza, pruebas de hipótesis — y lo validamos contra <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>.</p></li>
+</ol>
+</section>
+<section id="brechas-remanentes-material-de-refuerzo-autodirigido">
+<h2>Brechas remanentes (material de refuerzo autodirigido)<a class="headerlink" href="#brechas-remanentes-material-de-refuerzo-autodirigido" title="Permalink to this heading">#</a></h2>
+<p>Este nivelatorio comprimido no alcanza a cubrir todo. Para quienes quieran reforzar por su cuenta:</p>
+<ul class="simple">
+<li><p><strong>Regla de Cramer</strong> y métodos alternativos para resolver sistemas lineales.</p></li>
+<li><p><strong>Integrales</strong> (complemento natural de la derivada, útil para funciones de densidad de probabilidad).</p></li>
+<li><p><strong>Curtosis y asimetría</strong> como medidas adicionales de forma de una distribución.</p></li>
+<li><p><strong>Combinatoria</strong> (permutaciones, combinaciones), base de la probabilidad discreta más formal.</p></li>
+</ul>
+</section>
+<section id="preguntas-de-cierre-para-discusion">
+<h2>Preguntas de cierre (para discusión)<a class="headerlink" href="#preguntas-de-cierre-para-discusion" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>¿Por qué el gradiente de la función de pérdida se anula exactamente en el mínimo?</p></li>
+<li><p>Si un coeficiente tiene un intervalo de confianza que sí contiene el cero, ¿qué se puede concluir sobre esa variable?</p></li>
+<li><p>¿Cuál es la interpretación <em>correcta</em> de un valor-p de 0.03 en una prueba de hipótesis?</p></li>
+<li><p>¿Por qué usamos la distribución t (y no la Normal) para construir el intervalo de confianza de los coeficientes de OLS?</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sesión 2: Cálculo aplicado, Regresión OLS, Probabilidad e Inferencia</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-1-calculo-condensado-hacia-ols">Bloque 1: Cálculo condensado (hacia OLS)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivada-la-pendiente-de-una-funcion">Derivada: la pendiente de una función</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regla-de-la-cadena">Regla de la cadena</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradiente-la-derivada-en-varias-dimensiones">Gradiente: la derivada en varias dimensiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-la-funcion-de-perdida-a-la-ecuacion-normal">De la función de pérdida a la ecuación normal</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-2-laboratorio-regresion-ols-aplicada">Bloque 2: Laboratorio — Regresión OLS aplicada</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-respuesta-y-predictoras">Variable respuesta y predictoras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-los-coeficientes">Interpretación de los coeficientes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-3-probabilidad-esencial">Bloque 3: Probabilidad esencial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomas-basicos">Axiomas básicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-condicional-y-teorema-de-bayes">Probabilidad condicional y Teorema de Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-y-distribuciones-clave">Variables aleatorias y distribuciones clave</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-4-inferencia-esencial">Bloque 4: Inferencia esencial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-puntual-vs-intervalo-de-confianza">Estimación puntual vs. intervalo de confianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-hipotesis-las-ventas-en-feriados-son-distintas">Prueba de hipótesis: ¿las ventas en feriados son distintas?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-5-proyecto-integrador-mini">Bloque 5: Proyecto integrador mini</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-estandar-de-los-coeficientes">Errores estándar de los coeficientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-contra-statsmodels">Validación contra <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discusion-guiada">Discusión guiada</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cierre-y-retroalimentacion">Cierre y retroalimentación</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintesis-del-arco-completo">Síntesis del arco completo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brechas-remanentes-material-de-refuerzo-autodirigido">Brechas remanentes (material de refuerzo autodirigido)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-cierre-para-discusion">Preguntas de cierre (para discusión)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandra Meneses y Sergio Rada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
