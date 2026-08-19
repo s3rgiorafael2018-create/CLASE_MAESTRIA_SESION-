@@ -368,6 +368,50 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-4-inferencia-esencial">Bloque 4: Inferencia esencial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-clave">Conceptos clave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-esperado">Valor esperado</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">Varianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-la-varianza">Propiedades de la varianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-discretas-y-continuas">Distribuciones discretas y continuas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-discretas">Variables discretas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables continuas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimadores">Estimadores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimadores-insesgados">Estimadores insesgados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#media-muestral">Media muestral</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza-muestral">Varianza muestral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalos-de-confianza">Intervalos de confianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nivel-de-confianza-y-nivel-de-significancia">Nivel de confianza y nivel de significancia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-hipotesis">Prueba de hipótesis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-nula">Hipótesis nula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-alternativa">Hipótesis alternativa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reglas-de-decision-para-pruebas-de-hipotesis-sobre-la-media">Reglas de decisión para pruebas de hipótesis sobre la media</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-bilateral">Prueba bilateral</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-unilateral-derecha">Prueba unilateral derecha</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-unilateral-izquierda">Prueba unilateral izquierda</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-normalidad">10. Prueba de normalidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-diferencia-de-varianzas">Prueba de diferencia de varianzas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-tipo-i-y-tipo-ii">Errores tipo I y tipo II</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-tipo-i">Error tipo I</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-tipo-ii">Error tipo II</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-valor">p-valor</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-puntual-vs-intervalo-de-confianza">Estimación puntual vs. intervalo de confianza</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-hipotesis-las-ventas-en-feriados-son-distintas">Prueba de hipótesis: ¿las ventas en feriados son distintas?</a></li>
 </ul>
@@ -1142,6 +1186,773 @@ P(feriado) [base]                = 0.0039
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="bloque-4-inferencia-esencial">
 <h1>Bloque 4: Inferencia esencial<a class="headerlink" href="#bloque-4-inferencia-esencial" title="Permalink to this heading">#</a></h1>
+<section id="conceptos-clave">
+<h2>Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permalink to this heading">#</a></h2>
+<section id="valor-esperado">
+<h3>Valor esperado<a class="headerlink" href="#valor-esperado" title="Permalink to this heading">#</a></h3>
+<p>El valor esperado de una variable aleatoria representa su valor promedio teórico
+a largo plazo.</p>
+<p>Para una variable aleatoria discreta:</p>
+<div class="math notranslate nohighlight">
+\[
+E[X] = \sum_x xP(X=x)
+\]</div>
+<p>El valor esperado no necesariamente tiene que ser un valor que la variable
+pueda tomar.</p>
+<p>Por ejemplo, si <span class="math notranslate nohighlight">\(X\)</span> representa el número de accidentes de un asegurado,
+su valor esperado podría ser <span class="math notranslate nohighlight">\(0.8\)</span>, aunque una persona no pueda tener
+exactamente 0.8 accidentes.</p>
+<section id="ejemplo">
+<h4>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h4>
+<p>Supongamos la siguiente distribución:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Número de accidentes</p></th>
+<th class="head"><p>Probabilidad</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0.50</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0.30</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0.15</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+<p>Entonces:</p>
+<div class="math notranslate nohighlight">
+\[
+E[X] =
+0(0.50)+1(0.30)+2(0.15)+3(0.05)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+E[X]=0.75
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">probabilidades</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+
+<span class="n">valor_esperado</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">probabilidades</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valor esperado:&quot;</span><span class="p">,</span> <span class="n">valor_esperado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valor esperado: 0.75
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="varianza">
+<h2>Varianza<a class="headerlink" href="#varianza" title="Permalink to this heading">#</a></h2>
+<p>La varianza mide la dispersión de una variable aleatoria respecto a su
+valor esperado.</p>
+<p>Se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(X)=E[(X-E[X])^2]
+\]</div>
+<p>También podemos utilizar:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(X)=E[X^2]-(E[X])^2
+\]</div>
+<p>La desviación estándar corresponde a:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma = \sqrt{Var(X)}
+\]</div>
+<p>La varianza está expresada en unidades cuadradas, mientras que la desviación
+estándar está expresada en las mismas unidades de la variable original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">probabilidades</span><span class="p">)</span>
+
+<span class="n">EX2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">probabilidades</span><span class="p">)</span>
+
+<span class="n">varianza</span> <span class="o">=</span> <span class="n">EX2</span> <span class="o">-</span> <span class="n">EX</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">desviacion_estandar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">varianza</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valor esperado:&quot;</span><span class="p">,</span> <span class="n">EX</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Varianza:&quot;</span><span class="p">,</span> <span class="n">varianza</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Desviación estándar:&quot;</span><span class="p">,</span> <span class="n">desviacion_estandar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valor esperado: 0.75
+Varianza: 0.7874999999999999
+Desviación estándar: 0.8874119674649423
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="propiedades-de-la-varianza">
+<h2>Propiedades de la varianza<a class="headerlink" href="#propiedades-de-la-varianza" title="Permalink to this heading">#</a></h2>
+<p>Para constantes <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(aX+b)=a^2Var(X)
+\]</div>
+<p>En particular:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(X+b)=Var(X)
+\]</div>
+<p>y:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(aX)=a^2Var(X)
+\]</div>
+</section>
+<section id="distribuciones-discretas-y-continuas">
+<h2>Distribuciones discretas y continuas<a class="headerlink" href="#distribuciones-discretas-y-continuas" title="Permalink to this heading">#</a></h2>
+<p>Una distribución de probabilidad describe cómo se distribuyen los posibles
+valores de una variable aleatoria.</p>
+<section id="variables-discretas">
+<h3>Variables discretas<a class="headerlink" href="#variables-discretas" title="Permalink to this heading">#</a></h3>
+<p>Una variable aleatoria discreta toma valores que pueden ser contados.</p>
+<p>Ejemplos:</p>
+<ul class="simple">
+<li><p>número de accidentes;</p></li>
+<li><p>número de reclamaciones;</p></li>
+<li><p>número de clientes;</p></li>
+<li><p>número de errores.</p></li>
+</ul>
+<p>Para una variable discreta podemos calcular directamente:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=x)
+\]</div>
+<p>y la suma de todas las probabilidades debe ser:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_x P(X=x)=1
+\]</div>
+</section>
+<section id="variables-continuas">
+<h3>Variables continuas<a class="headerlink" href="#variables-continuas" title="Permalink to this heading">#</a></h3>
+<p>Una variable continua puede tomar cualquier valor dentro de un intervalo.</p>
+<p>Ejemplos:</p>
+<ul class="simple">
+<li><p>tiempo de reparación;</p></li>
+<li><p>monto de una pérdida;</p></li>
+<li><p>duración de un proceso;</p></li>
+<li><p>peso.</p></li>
+</ul>
+<p>En una variable continua:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=x)=0
+\]</div>
+<p>para un valor puntual.</p>
+<p>Las probabilidades se calculan sobre intervalos:</p>
+<div class="math notranslate nohighlight">
+\[
+P(a&lt;X&lt;b)=\int_a^b f(x)\,dx
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(f(x)\)</span> representa la función de densidad.</p>
+<p>La diferencia fundamental es que en una variable discreta se asignan
+probabilidades a valores específicos, mientras que en una variable continua
+las probabilidades se obtienen mediante áreas sobre intervalos.</p>
+</section>
+</section>
+<section id="estimadores">
+<h2>Estimadores<a class="headerlink" href="#estimadores" title="Permalink to this heading">#</a></h2>
+<p>Un estimador es una función de los datos muestrales que se utiliza para
+aproximar un parámetro desconocido de la población.</p>
+<p>Por ejemplo, para estimar la media poblacional <span class="math notranslate nohighlight">\(\mu\)</span>, podemos utilizar
+la media muestral:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mu}=\bar{X}
+\]</div>
+<p>donde:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{X}=
+\frac{1}{n}\sum_{i=1}^{n}X_i
+\]</div>
+<p>Es importante distinguir entre estimador y estimación.</p>
+<p>El <strong>estimador</strong> es la regla o fórmula utilizada.</p>
+<p>La <strong>estimación</strong> es el valor numérico obtenido después de observar los datos.</p>
+<p>Por ejemplo:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mu}=\bar X
+\]</div>
+<p>es el estimador.</p>
+<p>Si después de observar una muestra obtenemos:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}=72.5
+\]</div>
+<p>entonces 72.5 es la estimación puntual de <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+</section>
+<section id="estimadores-insesgados">
+<h2>Estimadores insesgados<a class="headerlink" href="#estimadores-insesgados" title="Permalink to this heading">#</a></h2>
+<p>Un estimador <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> es insesgado para un parámetro <span class="math notranslate nohighlight">\(\theta\)</span> si:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\theta}]=\theta
+\]</div>
+<p>El sesgo de un estimador se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+Sesgo(\hat{\theta})
+=
+E[\hat{\theta}]-\theta
+\]</div>
+<p>Por lo tanto, un estimador es insesgado cuando:</p>
+<div class="math notranslate nohighlight">
+\[
+Sesgo(\hat{\theta})=0
+\]</div>
+<section id="media-muestral">
+<h3>Media muestral<a class="headerlink" href="#media-muestral" title="Permalink to this heading">#</a></h3>
+<p>La media muestral es un estimador insesgado de la media poblacional:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\bar X]=\mu
+\]</div>
+<p>Por lo tanto:</p>
+<div class="math notranslate nohighlight">
+\[
+Sesgo(\bar X)=0
+\]</div>
+</section>
+</section>
+<section id="varianza-muestral">
+<h2>Varianza muestral<a class="headerlink" href="#varianza-muestral" title="Permalink to this heading">#</a></h2>
+<p>La varianza muestral:</p>
+<div class="math notranslate nohighlight">
+\[
+S^2=
+\frac{1}{n-1}
+\sum_{i=1}^{n}(X_i-\bar X)^2
+\]</div>
+<p>es un estimador insesgado de la varianza poblacional bajo los supuestos
+habituales de una muestra aleatoria:</p>
+<div class="math notranslate nohighlight">
+\[
+E[S^2]=\sigma^2
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">])</span>
+
+<span class="n">varianza_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">datos3</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">varianza_n_menos_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">datos3</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Varianza usando n:&quot;</span><span class="p">,</span> <span class="n">varianza_n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Varianza usando n-1:&quot;</span><span class="p">,</span> <span class="n">varianza_n_menos_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Varianza usando n: 4.4399999999999995
+Varianza usando n-1: 4.933333333333334
+</pre></div>
+</div>
+</div>
+</div>
+<p>El uso de <span class="math notranslate nohighlight">\(n-1\)</span> en la varianza muestral proporciona un estimador insesgado
+de la varianza poblacional bajo los supuestos habituales.</p>
+</section>
+<section id="intervalos-de-confianza">
+<h2>Intervalos de confianza<a class="headerlink" href="#intervalos-de-confianza" title="Permalink to this heading">#</a></h2>
+<p>Un intervalo de confianza permite construir un rango de valores plausibles
+para un parámetro poblacional.</p>
+<p>En términos generales:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Estimación}
+\pm
+\text{Valor crítico}
+\times
+\text{Error estándar}
+\]</div>
+<p>Para una media cuando la desviación estándar poblacional es desconocida,
+podemos utilizar la distribución <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar X
+\pm
+t_{\alpha/2,n-1}
+\frac{S}{\sqrt n}
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bar X\)</span> es la media muestral;</p></li>
+<li><p><span class="math notranslate nohighlight">\(S\)</span> es la desviación estándar muestral;</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el tamaño de muestra;</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_{\alpha/2,n-1}\)</span> es el valor crítico de la distribución t;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> es el nivel de significancia.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">datos4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mi">42</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span>
+    <span class="mi">39</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="mi">52</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">50</span>
+<span class="p">])</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datos4</span><span class="p">)</span>
+
+<span class="n">media</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">datos4</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">datos4</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">valor_critico</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span>
+    <span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">error_estandar</span> <span class="o">=</span> <span class="n">s</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">margen</span> <span class="o">=</span> <span class="n">valor_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+
+<span class="n">limite_inferior</span> <span class="o">=</span> <span class="n">media</span> <span class="o">-</span> <span class="n">margen</span>
+<span class="n">limite_superior</span> <span class="o">=</span> <span class="n">media</span> <span class="o">+</span> <span class="n">margen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media:&quot;</span><span class="p">,</span> <span class="n">media</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error estándar:&quot;</span><span class="p">,</span> <span class="n">error_estandar</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Límite inferior:&quot;</span><span class="p">,</span> <span class="n">limite_inferior</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Límite superior:&quot;</span><span class="p">,</span> <span class="n">limite_superior</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media: 46.0
+Error estándar: 1.2724180205607034
+Límite inferior: 43.270934768035794
+Límite superior: 48.729065231964206
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intervalo</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span>
+    <span class="n">confidence</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="n">media</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="n">error_estandar</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intervalo de confianza:&quot;</span><span class="p">,</span> <span class="n">intervalo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intervalo de confianza: (43.270934768035794, 48.729065231964206)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nivel-de-confianza-y-nivel-de-significancia">
+<h2>Nivel de confianza y nivel de significancia<a class="headerlink" href="#nivel-de-confianza-y-nivel-de-significancia" title="Permalink to this heading">#</a></h2>
+<p>El nivel de confianza se representa mediante:</p>
+<div class="math notranslate nohighlight">
+\[
+1-\alpha
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\alpha\)</span> es el nivel de significancia.</p>
+<p>Por ejemplo:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nivel de confianza</p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>90%</p></td>
+<td class="text-right"><p>0.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>95%</p></td>
+<td class="text-right"><p>0.05</p></td>
+</tr>
+<tr class="row-even"><td><p>99%</p></td>
+<td class="text-right"><p>0.01</p></td>
+</tr>
+</tbody>
+</table>
+<p>Un intervalo de confianza del 95% corresponde a:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha=1-0.95=0.05
+\]</div>
+<p>El nivel de significancia también se utiliza en las pruebas de hipótesis.</p>
+<p>Es importante entender que un intervalo de confianza del 95% no significa
+que exista una probabilidad del 95% de que un parámetro fijo esté dentro de
+un intervalo particular. La interpretación frecuentista se refiere al
+comportamiento del procedimiento al repetir el muestreo.</p>
+</section>
+<section id="prueba-de-hipotesis">
+<h2>Prueba de hipótesis<a class="headerlink" href="#prueba-de-hipotesis" title="Permalink to this heading">#</a></h2>
+<p>Una prueba de hipótesis permite evaluar una afirmación sobre un parámetro
+poblacional utilizando información obtenida de una muestra.</p>
+<p>Se establecen dos hipótesis:</p>
+<section id="hipotesis-nula">
+<h3>Hipótesis nula<a class="headerlink" href="#hipotesis-nula" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+H_0
+\]</div>
+<p>Representa la afirmación de referencia.</p>
+</section>
+<section id="hipotesis-alternativa">
+<h3>Hipótesis alternativa<a class="headerlink" href="#hipotesis-alternativa" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+H_1
+\]</div>
+<p>Representa la afirmación que queremos contrastar frente a <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<p>Por ejemplo:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0:\mu=50
+\]</div>
+<p>frente a:</p>
+<div class="math notranslate nohighlight">
+\[
+H_1:\mu\neq50
+\]</div>
+<p>Esta corresponde a una prueba bilateral.</p>
+<p>La decisión se puede realizar utilizando el p-valor:</p>
+<div class="math notranslate nohighlight">
+\[
+p\text{-valor}&lt;\alpha
+\Rightarrow
+\text{rechazar }H_0
+\]</div>
+<p>Mientras que:</p>
+<div class="math notranslate nohighlight">
+\[
+p\text{-valor}\geq\alpha
+\Rightarrow
+\text{no rechazar }H_0
+\]</div>
+</section>
+<section id="reglas-de-decision-para-pruebas-de-hipotesis-sobre-la-media">
+<h3>Reglas de decisión para pruebas de hipótesis sobre la media<a class="headerlink" href="#reglas-de-decision-para-pruebas-de-hipotesis-sobre-la-media" title="Permalink to this heading">#</a></h3>
+<p>Sea la hipótesis nula:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0:\mu=\mu_0
+\]</div>
+<p>y sea <span class="math notranslate nohighlight">\(\alpha\)</span> el nivel de significancia.</p>
+<section id="prueba-bilateral">
+<h4>Prueba bilateral<a class="headerlink" href="#prueba-bilateral" title="Permalink to this heading">#</a></h4>
+<p>Cuando la hipótesis alternativa es:</p>
+<div class="math notranslate nohighlight">
+\[
+H_1:\mu\neq\mu_0
+\]</div>
+<p>La regla de decisión mediante el p-valor es:</p>
+<div class="math notranslate nohighlight">
+\[
+p\text{-valor}&lt;\alpha
+\quad\Rightarrow\quad
+\text{Rechazar }H_0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p\text{-valor}\geq\alpha
+\quad\Rightarrow\quad
+\text{No rechazar }H_0
+\]</div>
+<p>Mediante el estadístico de prueba:</p>
+<div class="math notranslate nohighlight">
+\[
+|t|&gt;t_{\alpha/2,n-1}
+\quad\Rightarrow\quad
+\text{Rechazar }H_0
+\]</div>
+</section>
+<section id="prueba-unilateral-derecha">
+<h4>Prueba unilateral derecha<a class="headerlink" href="#prueba-unilateral-derecha" title="Permalink to this heading">#</a></h4>
+<p>Cuando la hipótesis alternativa es:</p>
+<div class="math notranslate nohighlight">
+\[
+H_1:\mu&gt;\mu_0
+\]</div>
+<p>La regla de decisión es:</p>
+<div class="math notranslate nohighlight">
+\[
+p\text{-valor}&lt;\alpha
+\quad\Rightarrow\quad
+\text{Rechazar }H_0
+\]</div>
+<p>Mediante el estadístico de prueba:</p>
+<div class="math notranslate nohighlight">
+\[
+t&gt;t_{\alpha,n-1}
+\quad\Rightarrow\quad
+\text{Rechazar }H_0
+\]</div>
+</section>
+<section id="prueba-unilateral-izquierda">
+<h4>Prueba unilateral izquierda<a class="headerlink" href="#prueba-unilateral-izquierda" title="Permalink to this heading">#</a></h4>
+<p>Cuando la hipótesis alternativa es:</p>
+<div class="math notranslate nohighlight">
+\[
+H_1:\mu&lt;\mu_0
+\]</div>
+<p>La regla de decisión es:</p>
+<div class="math notranslate nohighlight">
+\[
+p\text{-valor}&lt;\alpha
+\quad\Rightarrow\quad
+\text{Rechazar }H_0
+\]</div>
+<p>Mediante el estadístico de prueba:</p>
+<div class="math notranslate nohighlight">
+\[
+t&lt;t_{\alpha,n-1}
+\quad\Rightarrow\quad
+\text{Rechazar }H_0
+\]</div>
+</section>
+<section id="resumen">
+<h4>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Tipo de prueba</p></th>
+<th class="head text-center"><p>Hipótesis alternativa</p></th>
+<th class="head text-left"><p>Región de rechazo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Bilateral</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mu\neq\mu_0\)</span></p></td>
+<td class="text-left"><p>$</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Unilateral derecha</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mu&gt;\mu_0\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(t&gt;t_{\alpha,n-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Unilateral izquierda</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mu&lt;\mu_0\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(t&lt;t_{\alpha,n-1}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>En todos los casos, utilizando el p-valor:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p\text{-valor}&lt;\alpha
+\Rightarrow
+\text{Rechazar }H_0
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p\text{-valor}\geq\alpha
+\Rightarrow
+\text{No rechazar }H_0
+}
+\]</div>
+</section>
+</section>
+</section>
+<section id="prueba-de-normalidad">
+<h2>10. Prueba de normalidad<a class="headerlink" href="#prueba-de-normalidad" title="Permalink to this heading">#</a></h2>
+<p>Las pruebas de normalidad permiten evaluar si los datos son compatibles
+con el supuesto de normalidad.</p>
+<p>Una prueba conocida es la prueba de <strong>Shapiro-Wilk</strong>.</p>
+<p>Las hipótesis son:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0:\text{los datos son compatibles con una distribución normal}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_1:\text{los datos no son compatibles con una distribución normal}
+\]</div>
+<p>Utilizando un nivel de significancia <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>:</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(p&lt;0.05\)</span>, rechazamos <span class="math notranslate nohighlight">\(H_0\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(p\geq0.05\)</span>, no rechazamos <span class="math notranslate nohighlight">\(H_0\)</span>.</p></li>
+</ul>
+<p>No rechazar <span class="math notranslate nohighlight">\(H_0\)</span> no significa demostrar que los datos son normales.
+Significa que no encontramos evidencia suficiente contra el supuesto
+de normalidad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mi">42</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span>
+    <span class="mi">39</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="mi">52</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">50</span>
+<span class="p">])</span>
+
+<span class="n">resultado_shapiro</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">datos5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estadístico:&quot;</span><span class="p">,</span> <span class="n">resultado_shapiro</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-valor:&quot;</span><span class="p">,</span> <span class="n">resultado_shapiro</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="k">if</span> <span class="n">resultado_shapiro</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Se rechaza H0: evidencia contra la normalidad.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se rechaza H0: no hay evidencia suficiente contra la normalidad.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estadístico: 0.9851431846618652
+p-valor: 0.9930816292762756
+No se rechaza H0: no hay evidencia suficiente contra la normalidad.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prueba-de-diferencia-de-varianzas">
+<h2>Prueba de diferencia de varianzas<a class="headerlink" href="#prueba-de-diferencia-de-varianzas" title="Permalink to this heading">#</a></h2>
+<p>Cuando queremos comparar la variabilidad de dos poblaciones podemos plantear:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0:\sigma_1^2=\sigma_2^2
+\]</div>
+<p>frente a:</p>
+<div class="math notranslate nohighlight">
+\[
+H_1:\sigma_1^2\neq\sigma_2^2
+\]</div>
+<p>Una prueba ampliamente utilizada es la prueba de <strong>Levene</strong>.</p>
+<p>La prueba de Levene permite evaluar si dos o más grupos presentan
+varianzas iguales.</p>
+<p>Para dos grupos:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0:\sigma_1^2=\sigma_2^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_1:\sigma_1^2\neq\sigma_2^2
+\]</div>
+<p>Si el p-valor es menor que <span class="math notranslate nohighlight">\(\alpha\)</span>, rechazamos la igualdad de varianzas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grupo_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mi">42</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="mi">46</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">42</span>
+<span class="p">])</span>
+
+<span class="n">grupo_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mi">30</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="mi">60</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">58</span>
+<span class="p">])</span>
+
+<span class="n">resultado_levene</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">levene</span><span class="p">(</span>
+    <span class="n">grupo_1</span><span class="p">,</span>
+    <span class="n">grupo_2</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estadístico de Levene:&quot;</span><span class="p">,</span> <span class="n">resultado_levene</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-valor:&quot;</span><span class="p">,</span> <span class="n">resultado_levene</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="k">if</span> <span class="n">resultado_levene</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Se rechaza H0: las varianzas son significativamente diferentes.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se rechaza H0: no hay evidencia suficiente de diferencia entre las varianzas.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estadístico de Levene: 37.55588235294117
+p-valor: 8.675280751630627e-06
+Se rechaza H0: las varianzas son significativamente diferentes.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="errores-tipo-i-y-tipo-ii">
+<h2>Errores tipo I y tipo II<a class="headerlink" href="#errores-tipo-i-y-tipo-ii" title="Permalink to this heading">#</a></h2>
+<p>Al realizar una prueba de hipótesis podemos cometer errores.</p>
+<section id="error-tipo-i">
+<h3>Error tipo I<a class="headerlink" href="#error-tipo-i" title="Permalink to this heading">#</a></h3>
+<p>Se produce cuando rechazamos <span class="math notranslate nohighlight">\(H_0\)</span> aunque <span class="math notranslate nohighlight">\(H_0\)</span> sea verdadera.</p>
+<p>Su probabilidad está relacionada con el nivel de significancia:</p>
+<div class="math notranslate nohighlight">
+\[
+P(\text{Error Tipo I})=\alpha
+\]</div>
+<p>Por ejemplo, si:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha=0.05
+\]</div>
+<p>el procedimiento se establece con un nivel de significancia del 5%.</p>
+</section>
+</section>
+<section id="error-tipo-ii">
+<h2>Error tipo II<a class="headerlink" href="#error-tipo-ii" title="Permalink to this heading">#</a></h2>
+<p>Se produce cuando no rechazamos <span class="math notranslate nohighlight">\(H_0\)</span> cuando <span class="math notranslate nohighlight">\(H_0\)</span> es falsa.</p>
+<p>Su probabilidad se representa normalmente mediante:</p>
+<div class="math notranslate nohighlight">
+\[
+\beta
+\]</div>
+<p>La potencia estadística es:</p>
+<div class="math notranslate nohighlight">
+\[
+Power=1-\beta
+\]</div>
+<section id="p-valor">
+<h3>p-valor<a class="headerlink" href="#p-valor" title="Permalink to this heading">#</a></h3>
+<p>El p-valor es una medida utilizada en las pruebas de hipótesis.</p>
+<p>Bajo la hipótesis nula, representa la probabilidad de obtener un resultado
+tan extremo o más extremo que el observado, de acuerdo con la distribución
+del estadístico de prueba.</p>
+<p>La regla de decisión habitual es:</p>
+<div class="math notranslate nohighlight">
+\[
+p&lt;\alpha
+\Rightarrow
+\text{rechazar }H_0
+\]</div>
+<p>y:</p>
+<div class="math notranslate nohighlight">
+\[
+p\geq\alpha
+\Rightarrow
+\text{no rechazar }H_0
+\]</div>
+<p>Es importante no interpretar el p-valor como la probabilidad de que <span class="math notranslate nohighlight">\(H_0\)</span>
+sea verdadera.</p>
+</section>
+</section>
 <section id="estimacion-puntual-vs-intervalo-de-confianza">
 <h2>Estimación puntual vs. intervalo de confianza<a class="headerlink" href="#estimacion-puntual-vs-intervalo-de-confianza" title="Permalink to this heading">#</a></h2>
 <p>Un <strong>estimador puntual</strong> (como <span class="math notranslate nohighlight">\(\bar{x}\)</span> para la media) da un solo número, pero no dice nada sobre qué tan confiable es. Un <strong>intervalo de confianza (IC)</strong> agrega esa incertidumbre:</p>
@@ -1343,8 +2154,8 @@ Valor-p: 0.000000
 Dep. Variable:                      y   R-squared:                       0.007
 Model:                            OLS   Adj. R-squared:                  0.007
 Method:                 Least Squares   F-statistic:                     26.26
-Date:                Tue, 18 Aug 2026   Prob (F-statistic):           6.46e-17
-Time:                        17:09:21   Log-Likelihood:            -1.2640e+05
+Date:                Wed, 19 Aug 2026   Prob (F-statistic):           6.46e-17
+Time:                        16:00:39   Log-Likelihood:            -1.2640e+05
 No. Observations:               10774   AIC:                         2.528e+05
 Df Residuals:                   10770   BIC:                         2.528e+05
 Df Model:                           3                                         
@@ -1484,6 +2295,50 @@ Notes:
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bloque-4-inferencia-esencial">Bloque 4: Inferencia esencial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-clave">Conceptos clave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-esperado">Valor esperado</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">Varianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-la-varianza">Propiedades de la varianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-discretas-y-continuas">Distribuciones discretas y continuas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-discretas">Variables discretas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables continuas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimadores">Estimadores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimadores-insesgados">Estimadores insesgados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#media-muestral">Media muestral</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza-muestral">Varianza muestral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalos-de-confianza">Intervalos de confianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nivel-de-confianza-y-nivel-de-significancia">Nivel de confianza y nivel de significancia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-hipotesis">Prueba de hipótesis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-nula">Hipótesis nula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hipotesis-alternativa">Hipótesis alternativa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reglas-de-decision-para-pruebas-de-hipotesis-sobre-la-media">Reglas de decisión para pruebas de hipótesis sobre la media</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-bilateral">Prueba bilateral</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-unilateral-derecha">Prueba unilateral derecha</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-unilateral-izquierda">Prueba unilateral izquierda</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-normalidad">10. Prueba de normalidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-diferencia-de-varianzas">Prueba de diferencia de varianzas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-tipo-i-y-tipo-ii">Errores tipo I y tipo II</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-tipo-i">Error tipo I</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-tipo-ii">Error tipo II</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-valor">p-valor</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-puntual-vs-intervalo-de-confianza">Estimación puntual vs. intervalo de confianza</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-hipotesis-las-ventas-en-feriados-son-distintas">Prueba de hipótesis: ¿las ventas en feriados son distintas?</a></li>
 </ul>
